@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --ud-bg: #101315;
+  --ud-surface: #171c1e;
+  --ud-surface-raised: #1c2425;
+  --ud-border: #2a3235;
+  --ud-muted: #aab4af;
+  --ud-dim: #74807c;
+  --ud-text: #e8ece7;
+  --ud-accent: #c7e85b;
+  --ud-violet: #8b5cf6;
+}
+
+.ud-grid-bg { background-image: linear-gradient(rgba(42,50,53,.32) 1px, transparent 1px), linear-gradient(90deg, rgba(42,50,53,.32) 1px, transparent 1px); background-size: 36px 36px; }
+.ud-focus:focus-visible { outline: 1px solid var(--ud-accent); outline-offset: 2px; box-shadow: 0 0 0 4px rgba(199,232,91,.2); }
+.ud-input { width: 100%; min-height: 44px; border-radius: 6px; border: 1px solid #2a3235; background: #101315; padding: 0 12px; font-size: 14px; color: #e8ece7; font-family: var(--font-geist-mono), ui-monospace, monospace; }
+.ud-input:focus-visible { outline: none; border-color: var(--ud-accent); box-shadow: 0 0 0 3px rgba(199,232,91,.18); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }

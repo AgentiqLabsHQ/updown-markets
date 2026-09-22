@@ -1,0 +1,37 @@
+name: Redeploy RewardVault + BattleManager (one-off)
+
+# Manual-only. Supersedes the earlier BattleManager-only redeploy: RewardVault also needed a
+# fix (funds weren't scoped per-manager, so a fresh manager's battle numbering could collide
+# with a superseded manager's data in the same reused vault). BattleManager.vault is an
+# immutable reference, so it has to be redeployed alongside the vault. DiceSelector is reused
+# (unaffected) and repointed. Uses the same operator wallet as the scheduled keeper
+# (KEEPER_MNEMONIC), since that wallet owns RewardVault/DiceSelector and holds OPERATOR_ROLE.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+      # contracts/lib (forge-std, OpenZeppelin) is committed directly, not a submodule —
+      # nothing to install.
+      - name: Redeploy and rewire
+        working-directory: contracts
+        env:
+          MNEMONIC: ${{ secrets.KEEPER_MNEMONIC }}
+          PRIVATE_KEY: ${{ secrets.KEEPER_PRIVATE_KEY }}
+        run: |
+          if [ -n "$PRIVATE_KEY" ]; then
+            forge script script/RedeployVaultAndManager.s.sol:RedeployVaultAndManager \
+              --rpc-url https://rpc.testnet.chain.robinhood.com \
+              --private-key "$PRIVATE_KEY" \
+              --broadcast -vvv
+          else
+            forge script script/RedeployVaultAndManager.s.sol:RedeployVaultAndManager \
+              --rpc-url https://rpc.testnet.chain.robinhood.com \
+              --mnemonics "$MNEMONIC" \
+              --broadcast -vvv
+          fi

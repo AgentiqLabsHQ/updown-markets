@@ -1,0 +1,42 @@
+export interface StockTokenAsset { symbol: string; name: string; domain: string; brandColor: string; logo?: string; }
+
+// Logos are derived from each company's `domain` via DuckDuckGo's icon service in BrandLogo.
+// (Robinhood's ncw_assets/logos/<address>.png returns a generic placeholder for every token,
+// so it can't be used.) `logo` may be set to override a specific token's image.
+export const STOCK_ASSETS: Record<string, StockTokenAsset> = {
+  AAPL: { symbol: "AAPL", name: "Apple", domain: "apple.com", brandColor: "#a3aaae" },
+  AMD: { symbol: "AMD", name: "Advanced Micro Devices", domain: "amd.com", brandColor: "#ed1c24" },
+  AMZN: { symbol: "AMZN", name: "Amazon", domain: "amazon.com", brandColor: "#ff9900" },
+  ASML: { symbol: "ASML", name: "ASML Holding", domain: "asml.com", brandColor: "#0d47a1" },
+  BABA: { symbol: "BABA", name: "Alibaba", domain: "alibabagroup.com", brandColor: "#ff6a00" },
+  CLSK: { symbol: "CLSK", name: "CleanSpark", domain: "cleanspark.com", brandColor: "#9da6ad" },
+  COIN: { symbol: "COIN", name: "Coinbase", domain: "coinbase.com", brandColor: "#0052ff" },
+  CRCL: { symbol: "CRCL", name: "Circle Internet Group", domain: "circle.com", brandColor: "#4353ff" },
+  CRWV: { symbol: "CRWV", name: "CoreWeave", domain: "coreweave.com", brandColor: "#a6adb3" },
+  DELL: { symbol: "DELL", name: "Dell Technologies", domain: "dell.com", brandColor: "#007db8" },
+  EWY: { symbol: "EWY", name: "iShares MSCI South Korea ETF", domain: "ishares.com", brandColor: "#00a9e0" },
+  GME: { symbol: "GME", name: "GameStop", domain: "gamestop.com", brandColor: "#d3232a" },
+  GOOGL: { symbol: "GOOGL", name: "Alphabet", domain: "abc.xyz", brandColor: "#4285f4" },
+  HOOD: { symbol: "HOOD", name: "Robinhood", domain: "robinhood.com", brandColor: "#a6adb3" },
+  INTC: { symbol: "INTC", name: "Intel", domain: "intel.com", brandColor: "#0071c5" },
+  IONQ: { symbol: "IONQ", name: "IonQ", domain: "ionq.com", brandColor: "#2a2e82" },
+  META: { symbol: "META", name: "Meta", domain: "meta.com", brandColor: "#0866ff" },
+  MSFT: { symbol: "MSFT", name: "Microsoft", domain: "microsoft.com", brandColor: "#00a4ef" },
+  MSTR: { symbol: "MSTR", name: "Strategy", domain: "strategy.com", brandColor: "#ff6600" },
+  MU: { symbol: "MU", name: "Micron Technology", domain: "micron.com", brandColor: "#6e2585" },
+  NBIS: { symbol: "NBIS", name: "Nebius Group", domain: "nebius.com", brandColor: "#a6adb3" },
+  NVDA: { symbol: "NVDA", name: "NVIDIA", domain: "nvidia.com", brandColor: "#8d989f" },
+  ORCL: { symbol: "ORCL", name: "Oracle", domain: "oracle.com", brandColor: "#f80000" },
+  PLTR: { symbol: "PLTR", name: "Palantir Technologies", domain: "palantir.com", brandColor: "#4a4a4a" },
+  QQQ: { symbol: "QQQ", name: "Invesco QQQ", domain: "invesco.com", brandColor: "#003da5" },
+  RGTI: { symbol: "RGTI", name: "Rigetti Computing", domain: "rigetti.com", brandColor: "#00d2ff" },
+  RKLB: { symbol: "RKLB", name: "Rocket Lab", domain: "rocketlabusa.com", brandColor: "#fc3d21" },
+  SLV: { symbol: "SLV", name: "iShares Silver Trust", domain: "ishares.com", brandColor: "#00a9e0" },
+  SNDK: { symbol: "SNDK", name: "SanDisk", domain: "sandisk.com", brandColor: "#ed1c24" },
+  SPCX: { symbol: "SPCX", name: "SpaceX", domain: "spacex.com", brandColor: "#1d1d1f" },
+  SPY: { symbol: "SPY", name: "SPDR S&P 500 ETF Trust", domain: "ssga.com", brandColor: "#4a90d9" },
+  TSLA: { symbol: "TSLA", name: "Tesla", domain: "tesla.com", brandColor: "#e82127" },
+  TSM: { symbol: "TSM", name: "Taiwan Semiconductor", domain: "tsmc.com", brandColor: "#0047ab" },
+  USO: { symbol: "USO", name: "United States Oil Fund", domain: "uscfinvestments.com", brandColor: "#1b3a6b" },
+};
+export function assetFor(symbol?: string): StockTokenAsset | undefined { if (!symbol) return undefined; return STOCK_ASSETS[symbol.toUpperCase()]; }

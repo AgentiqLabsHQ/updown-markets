@@ -1,0 +1,32 @@
+{
+  "network": "robinhood-testnet",
+  "chainId": 46630,
+  "version": "v2.2",
+  "note": "RewardVault redeployed with the manager-scoping fix (battleToken/battleBalance keyed by (manager, battleId), not battleId alone — see PRD_AUDIT.md). BattleManager.vault is an immutable reference, so BattleManager was redeployed alongside it; the v2.1 BattleManager (0x6d9C10e2...) had battleCount() == 0, so nothing real was lost superseding it again. DiceSelector reused from v2, manager repointed. Verified live: old vault's battleBalance(1) still holds the orphaned 100 test USDC from v2's abandoned battle; new vault's battleBalance(1) starts at 0 — confirmed via a forked test hitting both real deployed contracts (test_cannotEnterBothSides_onRealDeployedContract, test_claim_fullLifecycle_onRealDeployedContracts, both passing against this deployment).",
+  "deployer": "0x325cB2956198E54dC6a05348b1712c8a9ea4757a",
+  "contracts": {
+    "BattleManager": "0x27481D71C02ebd54aF6c5B2B4431Cc443a427454",
+    "RewardVault": "0x1a0D29Cd5749F74fdE2552c4A8275421a35b554E",
+    "DiceSelector": "0xB928a3D6080900D1a5793A322c2Ccbd331Ff0F79",
+    "UpdownToken_mock": "0xEb74957E1cE2e5ae63B419a8Fa6D166E067A4Cf2",
+    "MockUSDC": "0xCd32BA7c4dD5d384261727B7289b4A9368d85035",
+    "UpdownPriceOracle_mock": "0x9231b4835d0a9e70D66D9e1D0F6b231296171B6a",
+    "FeedA_AAPL": "0xC96BCaD2db3B88E4452dcb8B3b89f995B0a33b4d",
+    "FeedB_TSLA": "0xB9fE66bB91EAeaFa5027284a24922bFE89ae202B",
+    "DiceEntropy_real": "0x43c8A7B1a85384cabf3D3Fd45a15C01F5b51A42D",
+    "DiceProvider_Tyche": "0x8741b8a825644D9Ef18Faf2DAB5e9b47B900F2b6"
+  },
+  "superseded": [
+    {
+      "version": "v2",
+      "BattleManager": "0xbc1bca8D604610230084e5E34Ee4C5ddbf033351",
+      "RewardVault": "0x4871F61e7d382FaeA68F61Bbe309abEA91f2f30c",
+      "reason": "had the both-sides entry bug; still holds two orphaned test battles (ids 1 and 2, 100 test USDC each, never settled) that are unreachable now that RewardVault's manager was repointed away from it"
+    },
+    {
+      "version": "v2.1",
+      "BattleManager": "0x6d9C10e219F55086777D0a4b81E3e8b9D4016CDd",
+      "reason": "fixed the both-sides bug, but reused v2's RewardVault, which had the un-scoped battleBalance bug; battleCount() was 0 at time of superseding, nothing real orphaned"
+    }
+  ]
+}

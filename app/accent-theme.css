@@ -1,0 +1,150 @@
+:root {
+  --ud-accent: #d6b36a;
+  --ud-accent-strong: #f0d79b;
+  --ud-accent-soft: #30291c;
+  --ud-on-accent: #17130b;
+  --ud-lavender: #cdbfe0;
+  --ud-dashboard-bg: #0d0d0f;
+  --ud-dashboard-surface: #151419;
+  --ud-dashboard-raised: #1c1921;
+  --ud-dashboard-border: #302c35;
+}
+
+/* The dashboard keeps its dense utility markup, while these shared tokens bring it into the landing page system. */
+.ud-app-shell {
+  background: radial-gradient(circle at 72% -12%, rgba(93, 67, 117, .22), transparent 34%), radial-gradient(circle at 18% 12%, rgba(214, 179, 106, .07), transparent 28%), var(--ud-dashboard-bg) !important;
+}
+.ud-app-shell main { min-height: calc(100vh - 76px); padding-right: clamp(16px, 3.2vw, 48px); padding-left: clamp(16px, 3.2vw, 48px); }
+.ud-app-shell header { background: rgba(13, 13, 15, .86) !important; }
+.ud-brand-mark { display: inline-flex; width: 18px; height: 18px; align-items: flex-end; gap: 2px; transform: skewX(-18deg); }
+.ud-brand-mark span { display: block; width: 7px; border-radius: 2px 2px 0 0; background: #d5a85f; }
+.ud-brand-mark span:first-child { height: 12px; }
+.ud-brand-mark span:last-child { height: 18px; background: #a275db; }
+.ud-wordmark { display: inline-flex; align-items: center; gap: 10px; color: #f7f6f7; font-size: 13px; font-weight: 700; letter-spacing: .13em; }
+.ud-wordmark-muted { color: #8f8c93; font-weight: 500; }
+.ud-card { box-shadow: 0 16px 42px rgba(0, 0, 0, .16); }
+
+[class*="border-[#3a4548]"], [class*="border-[#2a3235]"] { border-color: var(--ud-dashboard-border) !important; }
+[class*="bg-[#141819]"], [class*="bg-[#101315]"], [class*="bg-[#171c1e]"] { background-color: var(--ud-dashboard-surface) !important; }
+[class*="bg-[#1c2425]"] { background-color: var(--ud-dashboard-raised) !important; }
+[class*="text-[#e8ece7]"] { color: #f0edf2 !important; }
+[class*="text-[#aab4af]"] { color: #b5aebb !important; }
+[class*="text-[#74807c]"] { color: #8f8794 !important; }
+[class*="bg-[#c7e85b]"] { background: linear-gradient(135deg, #f4f2f4, #dfd5c8) !important; color: #17151a !important; }
+[class*="bg-[#263116]"] { background: rgba(139, 92, 246, .14) !important; }
+[class*="hover:bg-[#bcdc56]"]:hover { background: #f0d79b !important; }
+[class*="text-[#c7e85b]"], [class*="text-[#53632a]"] { color: var(--ud-accent) !important; }
+[class*="border-[#c7e85b]"], [class*="border-[#53632a]"] { border-color: var(--ud-accent) !important; }
+[class*="hover:border-[#c7e85b]"]:hover { border-color: var(--ud-accent-strong) !important; }
+[class*="hover:text-[#c7e85b"]:hover { color: var(--ud-accent-strong) !important; }
+[class*="bg-[#c7e85b"]:disabled, button:disabled, a[aria-disabled="true"] { filter: saturate(.35); cursor: not-allowed; opacity: .58; }
+.ud-focus:focus-visible { outline: 2px solid var(--ud-accent-strong); outline-offset: 3px; box-shadow: 0 0 0 4px rgba(214, 179, 106, .24); }
+.ud-input:focus-visible { border-color: var(--ud-accent) !important; box-shadow: 0 0 0 3px rgba(214, 179, 106, .24); }
+
+/* Preserve the existing panel layout while giving the dashboard the softer landing geometry. */
+.ud-app-shell section > div.rounded-xl,
+.ud-app-shell aside > div.rounded-xl,
+.ud-app-shell main > div.rounded-xl,
+.ud-app-shell main > div.rounded-lg,
+.ud-app-shell main > section > div.rounded-xl,
+.ud-app-shell main > section > div.rounded-lg { border-radius: 16px; box-shadow: 0 18px 48px rgba(0, 0, 0, .14); }
+.ud-app-shell button.rounded-md, .ud-app-shell a.rounded-md { border-radius: 10px; }
+.ud-app-shell button.rounded-lg, .ud-app-shell button.rounded-xl { transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.ud-app-shell button.rounded-lg:hover:not(:disabled) { transform: translateY(-1px); }
+
+/* Live battle: a quiet market grid keeps attention on the matchup and entry ticket. */
+.ud-app-shell main > div.grid.gap-6 { position: relative; isolation: isolate; }
+.ud-app-shell main > div.grid.gap-6::before { position: absolute; z-index: -1; inset: -48px -6vw auto; height: 430px; pointer-events: none; content: ""; opacity: .32; background-image: linear-gradient(rgba(214, 179, 106, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(214, 179, 106, .08) 1px, transparent 1px); background-size: 38px 38px; mask-image: linear-gradient(to bottom, black, transparent 78%); }
+.ud-app-shell main > div.grid.gap-6 > section > div:first-child, .ud-app-shell main > div.grid.gap-6 > aside > div:first-child { background: linear-gradient(145deg, rgba(28, 25, 33, .98), rgba(15, 15, 18, .98)) !important; box-shadow: 0 24px 70px rgba(0, 0, 0, .28), inset 0 1px rgba(255, 255, 255, .035); }
+.ud-app-shell main > div.grid.gap-6 > section > div:first-child { border-color: rgba(214, 179, 106, .28) !important; }
+.ud-app-shell main > div.grid.gap-6 > section > div:first-child button { min-height: 164px; background: rgba(13, 13, 15, .38); }
+.ud-app-shell main > div.grid.gap-6 > section > div:first-child button[aria-pressed="true"] { background: linear-gradient(135deg, rgba(54, 54, 39, .74), rgba(21, 34, 31, .9)); box-shadow: inset 0 0 0 1px rgba(240, 215, 155, .14), 0 12px 34px rgba(0, 0, 0, .22); }
+.ud-app-shell main > div.grid.gap-6 > section > div:nth-child(2) > div, .ud-app-shell main > div.grid.gap-6 > section > div:nth-child(3) > div { background: linear-gradient(145deg, rgba(24, 22, 28, .96), rgba(15, 15, 18, .96)) !important; }
+.ud-app-shell main > div.grid.gap-6 > section > div:nth-child(3) > div:last-child { background: linear-gradient(145deg, rgba(27, 42, 36, .94), rgba(18, 27, 25, .98)) !important; box-shadow: inset 0 0 28px rgba(102, 176, 116, .04); }
+.ud-app-shell main > div.grid.gap-6 > aside > div:first-child { border-color: rgba(240, 215, 155, .22) !important; }
+.ud-app-shell main > div.grid.gap-6 > aside > div:first-child button:not(:disabled) { box-shadow: 0 10px 28px rgba(214, 179, 106, .12); }
+.ud-app-shell main > div.grid.gap-6 > aside > div:first-child button:not(:disabled):hover { transform: translateY(-1px); box-shadow: 0 14px 34px rgba(214, 179, 106, .2); }
+.ud-app-shell main > div.grid.gap-6 p, .ud-app-shell main > div.grid.gap-6 span { overflow-wrap: anywhere; }
+
+/* The matchup is the focal point: an instrument-like header, asymmetric selection contrast, and a calm live pulse. */
+.matchup-card { position: relative; overflow: hidden; background: radial-gradient(circle at 50% 52%, rgba(214, 179, 106, .08), transparent 38%), linear-gradient(145deg, rgba(30, 26, 35, .99), rgba(13, 13, 16, .99)) !important; box-shadow: 0 28px 80px rgba(0, 0, 0, .34), inset 0 1px rgba(255, 255, 255, .06) !important; }
+.matchup-card::after { position: absolute; inset: auto 0 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(214, 179, 106, .72), transparent); content: ""; opacity: .7; }
+.matchup-heading, .matchup-subtitle, .matchup-grid { position: relative; z-index: 1; }
+.live-dot { width: 8px; height: 8px; border-radius: 999px; background: #d6b36a; box-shadow: 0 0 0 4px rgba(214, 179, 106, .12), 0 0 16px rgba(214, 179, 106, .62); animation: live-pulse 2.2s ease-in-out infinite; }
+.battle-status-badge { display: inline-flex; align-items: center; gap: 7px; }
+.status-ring { width: 6px; height: 6px; border-radius: 999px; background: currentColor; box-shadow: 0 0 10px currentColor; }
+.side-choice { position: relative; min-height: 174px !important; overflow: hidden; background: linear-gradient(145deg, rgba(16, 16, 19, .82), rgba(24, 21, 29, .5)) !important; box-shadow: inset 0 1px rgba(255, 255, 255, .035), 0 10px 28px rgba(0, 0, 0, .18); }
+.side-choice::before { position: absolute; inset: 0 auto 0 0; width: 3px; background: transparent; content: ""; transition: background-color .2s ease; }
+.side-choice:hover:not(:disabled), .side-choice:focus-visible { transform: translateY(-3px) !important; box-shadow: 0 16px 34px rgba(0, 0, 0, .32), inset 0 1px rgba(255, 255, 255, .08); }
+.side-choice-selected { background: linear-gradient(135deg, rgba(67, 57, 37, .7), rgba(20, 38, 34, .96)) !important; box-shadow: inset 0 0 0 1px rgba(240, 215, 155, .13), 0 18px 42px rgba(214, 179, 106, .13) !important; }
+.side-choice-selected::before { background: linear-gradient(#f0d79b, #a275db); }
+.side-choice-idle .side-arrow { opacity: 0; transform: translate(-3px, 3px); }
+.side-choice-idle:hover:not(:disabled) .side-arrow, .side-choice-idle:focus-visible .side-arrow { opacity: 1; transform: translate(0, 0); }
+.selection-mark { display: inline-flex; width: 20px; height: 20px; align-items: center; justify-content: center; border: 1px solid rgba(240, 215, 155, .7); border-radius: 999px; color: #f0d79b; font-size: 12px; }
+.side-arrow { color: #d6b36a; transition: opacity .2s ease, transform .2s ease; }
+.token-logo-wrap { display: inline-flex; border-radius: 18px; padding: 3px; background: linear-gradient(135deg, rgba(240, 215, 155, .62), rgba(162, 117, 219, .28)); box-shadow: 0 8px 22px rgba(0, 0, 0, .3); }
+.token-logo-wrap > .brand-logo-frame { border-radius: 15px; }
+.token-logo-selected { box-shadow: 0 0 0 4px rgba(214, 179, 106, .11), 0 10px 26px rgba(214, 179, 106, .22); }
+.vs-separator { color: #d6b36a; }
+.vs-line { display: block; width: 1px; height: 28px; background: linear-gradient(transparent, rgba(214, 179, 106, .55), transparent); }
+.vs-label { font-family: var(--font-geist-mono), ui-monospace, monospace; font-size: 11px; font-weight: 700; letter-spacing: .2em; text-shadow: 0 0 18px rgba(214, 179, 106, .32); }
+
+/* Entry ticket: keep the selected side, capacity, and action visually connected. */
+.entry-panel { background: radial-gradient(circle at 90% 0%, rgba(214, 179, 106, .09), transparent 38%), linear-gradient(145deg, rgba(30, 26, 35, .99), rgba(13, 13, 16, .99)) !important; box-shadow: 0 26px 72px rgba(0, 0, 0, .3), inset 0 1px rgba(255, 255, 255, .05) !important; }
+.entry-selection { box-shadow: inset 0 0 22px rgba(214, 179, 106, .06); }
+.entry-token-logo { display: inline-flex; flex-shrink: 0; border-radius: 13px; padding: 2px; background: linear-gradient(135deg, #f0d79b, rgba(162, 117, 219, .55)); }
+.entry-token-logo > .brand-logo-frame { border-radius: 10px; }
+.entry-details { border-top: 1px solid rgba(214, 179, 106, .18); }
+.entry-row { min-height: 42px; }
+.entry-action { min-height: 56px !important; font-size: 14px; letter-spacing: .01em; box-shadow: 0 12px 30px rgba(214, 179, 106, .16); }
+.entry-action:disabled { box-shadow: none; }
+.capacity-note { border-color: rgba(214, 179, 106, .18) !important; }
+
+@keyframes live-pulse { 0%, 100% { opacity: .72; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.12); } }
+
+/* Keep the dashboard usable on narrow screens while retaining a clear focal order. */
+@media (max-width: 1023px) {
+  .ud-app-shell main { padding-top: 20px; padding-bottom: 32px; }
+  .ud-app-shell main > div.grid.gap-6 { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .ud-app-shell main { min-height: calc(100svh - 76px); padding-right: 16px; padding-left: 16px; }
+  .ud-app-shell header { min-height: 76px; }
+  .ud-wordmark { font-size: 12px; }
+  .ud-app-shell main > div.grid.gap-6 > section > div:first-child button { min-height: 140px; }
+  .side-choice { min-height: 142px !important; }
+  .matchup-grid { display: flex !important; flex-direction: column; }
+  .matchup-grid .side-column:first-child { order: 1; }
+  .matchup-grid .vs-separator { order: 2; }
+  .matchup-grid .side-column:nth-child(2) { order: 3; }
+  .vs-line { width: 28px; height: 1px; background: linear-gradient(90deg, transparent, rgba(214, 179, 106, .55), transparent); }
+  .entry-row { align-items: flex-start; flex-wrap: wrap; }
+  .entry-row span:last-child { max-width: 100%; text-align: left; }
+  .entry-action { width: 100%; white-space: normal; }
+}
+
+@media (min-width: 641px) and (max-width: 1100px) {
+  .matchup-grid { grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1fr); }
+  .side-choice { min-height: 154px !important; padding: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  .live-dot, .ud-app-shell *:hover { transform: none !important; }
+}
+
+@media (forced-colors: active) {
+  .ud-focus:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid Highlight; box-shadow: none; }
+  .side-choice-selected, [aria-current="page"] { outline: 2px solid Highlight; }
+}
+
+@media (max-width: 380px) {
+  .ud-app-shell main { padding-right: 12px; padding-left: 12px; }
+  .entry-panel, .matchup-card { padding: 16px; }
+  .battle-data-value { font-size: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

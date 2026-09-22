@@ -1,0 +1,6 @@
+{
+  "poolUsdc": "100000000",
+  "winnerSlots": 10,
+  "maxEntriesPerBattle": 1000,
+  "rewardToken": "usdc"
+}

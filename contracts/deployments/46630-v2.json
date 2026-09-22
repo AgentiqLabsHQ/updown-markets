@@ -1,0 +1,18 @@
+{
+  "network": "robinhood-testnet",
+  "chainId": 46630,
+  "version": "v2",
+  "deployer": "0x325cB2956198E54dC6a05348b1712c8a9ea4757a",
+  "contracts": {
+    "BattleManager": "0xbc1bca8D604610230084e5E34Ee4C5ddbf033351",
+    "RewardVault": "0x4871F61e7d382FaeA68F61Bbe309abEA91f2f30c",
+    "DiceSelector": "0xB928a3D6080900D1a5793A322c2Ccbd331Ff0F79",
+    "UpdownToken_mock": "0xEb74957E1cE2e5ae63B419a8Fa6D166E067A4Cf2",
+    "MockUSDC": "0xCd32BA7c4dD5d384261727B7289b4A9368d85035",
+    "UpdownPriceOracle_mock": "0x9231b4835d0a9e70D66D9e1D0F6b231296171B6a",
+    "FeedA_AAPL": "0xC96BCaD2db3B88E4452dcb8B3b89f995B0a33b4d",
+    "FeedB_TSLA": "0xB9fE66bB91EAeaFa5027284a24922bFE89ae202B",
+    "DiceEntropy_real": "0x43c8A7B1a85384cabf3D3Fd45a15C01F5b51A42D",
+    "DiceProvider_Tyche": "0x8741b8a825644D9Ef18Faf2DAB5e9b47B900F2b6"
+  }
+}

@@ -1,0 +1,29 @@
+name: Battle keeper
+
+# Runs the full create/lock/settle cycle on a schedule, in GitHub's cloud — not dependent on
+# any local machine being on. Idempotent: create-if-needed, lock/settle-if-due, no-ops
+# otherwise, so overlapping/duplicate runs are harmless.
+on:
+  schedule:
+    # Every 5 minutes. GitHub may delay scheduled runs under load — the script is idempotent
+    # against on-chain state either way, so a late tick just catches up.
+    - cron: "*/5 * * * *"
+  workflow_dispatch: {} # manual "Run workflow" button, for on-demand testing
+
+jobs:
+  keeper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: node scripts/keeper.mjs
+        env:
+          # Use whichever secret is actually set — a raw hex private key, or the mnemonic
+          # directly (keeper.mjs derives the account from either).
+          PRIVATE_KEY: ${{ secrets.KEEPER_PRIVATE_KEY }}
+          MNEMONIC: ${{ secrets.KEEPER_MNEMONIC }}
+          RH_TESTNET_RPC: ${{ secrets.RH_TESTNET_RPC }} # optional; script falls back to the public RPC

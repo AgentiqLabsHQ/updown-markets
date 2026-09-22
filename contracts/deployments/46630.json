@@ -1,0 +1,23 @@
+{
+  "network": "robinhood-testnet",
+  "chainId": 46630,
+  "deployer": "0x325cB2956198E54dC6a05348b1712c8a9ea4757a",
+  "note": "Testnet deployment. Mocks stand in for real UPDOWN/USDC/Chainlink/Pyth on mainnet.",
+  "contracts": {
+    "BattleManager": "0x9737e6A983668D6AD677e72806c5cF53031cD639",
+    "RewardVault": "0x6e37D9647A2A4D3cC13f9265C256C42055A16d65",
+    "DiceSelector": "0x863bBD8399C6243d790151B2cFfE723DDae7641D",
+    "UpdownToken_mock": "0x0a7A8471f55440dD631f10B6EC8715E714Aa0441",
+    "MockUSDC": "0xFe271Ea5da6598121c637aC86242B5c3b73040c1",
+    "UpdownPriceOracle_mock": "0x13169f5ed412224965458CD02e7ab211F575F62a",
+    "FeedA_AAPL": "0x509F216c97Ea9d00746C48E5A3Ae4EcC8A749CD9",
+    "FeedB_TSLA": "0xe8A2F5233dF5D619Ff76ed358029e599521eE6Ce",
+    "Entropy_mock": "0xA39562d1f625e230B20aC1D9Cb53c6C32142fDc0",
+    "FeedC_NVDA": "0x5a142938E5998009744dC4AE883af6266d8C890e",
+    "FeedD_GOOG": "0xa06b8121DBABAeC827257BaD51aa67bf1C0D8353"
+  },
+  "config": {
+    "entryValueUsd8": "200000000",
+    "entryValueUsd": 2
+  }
+}
